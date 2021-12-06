@@ -8,6 +8,6 @@ feature 'visiting BookmarkManager' do
   end
 
   scenario 'shows the index page first' do
-    expect(page).to have_content("Bookmark Manager")
-  end 
+    expect(page).to have_content('Bookmark Manager')
+  end
 end
