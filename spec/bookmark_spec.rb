@@ -5,6 +5,6 @@ describe Bookmark do
 
   context '#all' 
   it 'returns an array of bookmarks' do
-    expect(bookmark.all).to match_array(["http://www.makersacademy.com","http://www.destroyallsoftware.com","http://www.google.com"])
+    expect(bookmark.all).to match_array(["http://www.makersacademy.com/","http://www.destroyallsoftware.com","http://www.google.com/"])
   end 
 end
