@@ -8,14 +8,14 @@ require 'bookmark'
 feature 'visiting Bookmarks' do
   scenario 'shows bookmarks' do
     PG.connect(dbname: 'bookmark_manager_test')
-    Bookmark.create('http://www.makersacademy.com', 'makersacademy')
-    Bookmark.create('http://www.destroyallsoftware.com', 'destroyallsoftware')
-    Bookmark.create('http://www.google.com', 'google')
+    Bookmark.create('http://www.makersacademy.com', 'Makers Academy')
+    Bookmark.create('http://www.destroyallsoftware.com', 'Destroy All Software')
+    Bookmark.create('http://www.google.com', 'Google')
 
     visit('/bookmarks')
 
-    expect(page).to have_content('http://www.makersacademy.com').once
-    expect(page).to have_content('http://www.destroyallsoftware.com').once
-    expect(page).to have_content('http://www.google.com').once
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com').once
+    expect(page).to have_link('Destroy All Software',  href: 'http://www.destroyallsoftware.com').once
+    expect(page).to have_link('Google', href: 'http://www.google.com').once
   end
 end

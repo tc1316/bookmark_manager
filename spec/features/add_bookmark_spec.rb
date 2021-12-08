@@ -11,8 +11,7 @@ feature 'add bookmark to BookmarkManager' do
     fill_in('url', with: 'www.github.com')
     fill_in('title', with: 'Github')
     click_button('Submit')
-    expect(page).to have_content('www.github.com')
-    expect(page).to have_content('Github')
+    expect(page).to have_link('Github', href: 'www.github.com').once
   end
 end
 

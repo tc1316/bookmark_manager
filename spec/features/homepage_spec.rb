@@ -9,7 +9,7 @@ feature 'visiting BookmarkManager' do
     visit('/')
   end
 
-  scenario 'shows the index page first' do
-    expect(page).to have_content('Bookmark Manager')
+  scenario 'shows the bookmark page' do
+    expect(page).to have_content('Bookmarks')
   end
 end

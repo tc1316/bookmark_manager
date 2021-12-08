@@ -10,12 +10,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    redirect '/bookmarks'
   end
 
   get '/bookmarks' do
     @bookmark = Bookmark.all
-    erb :list_of_bookmarks
+    erb :bookmarks
   end
 
   post '/url' do
