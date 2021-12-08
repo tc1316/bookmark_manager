@@ -11,17 +11,17 @@ class Bookmark
           end
 
     rs = con.exec('SELECT * FROM bookmarks')
-    rs.map { |bookmark| bookmark['url'] }
+    rs.map { |bookmark| bookmark['title'] + ' : ' + bookmark['url'] }
     # Returns array of values from url as key
   end
 
-  def self.create(url)
+  def self.create(url, title)
     con = if ENV['CUSTOM_ENV_TYPE'] == 'test'
             PG.connect(dbname: 'bookmark_manager_test')
           else
             PG.connect(dbname: 'bookmark_manager')
           end
 
-    con.exec("INSERT INTO bookmarks (url) VALUES ('#{url}');")
+    con.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}');")
   end
 end

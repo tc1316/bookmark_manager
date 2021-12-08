@@ -8,9 +8,9 @@ require 'bookmark'
 feature 'visiting Bookmarks' do
   scenario 'shows bookmarks' do
     PG.connect(dbname: 'bookmark_manager_test')
-    Bookmark.create('http://www.makersacademy.com')
-    Bookmark.create('http://www.destroyallsoftware.com')
-    Bookmark.create('http://www.google.com')
+    Bookmark.create('http://www.makersacademy.com', 'makersacademy')
+    Bookmark.create('http://www.destroyallsoftware.com', 'destroyallsoftware')
+    Bookmark.create('http://www.google.com', 'google')
 
     visit('/bookmarks')
 
