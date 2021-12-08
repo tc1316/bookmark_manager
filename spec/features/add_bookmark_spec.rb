@@ -14,4 +14,3 @@ feature 'add bookmark to BookmarkManager' do
     expect(page).to have_link('Github', href: 'www.github.com').once
   end
 end
-

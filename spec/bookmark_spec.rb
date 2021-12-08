@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative './database_helper'
 require 'bookmark'
 
@@ -10,7 +11,7 @@ describe Bookmark do
     bookmark1 = Bookmark.create('http://www.makersacademy.com', 'makers')
     Bookmark.create('http://www.destroyallsoftware.com', 'destroyallsoftware')
     Bookmark.create('http://www.google.com', 'google')
-    
+
     bm = Bookmark.all # Returns list of Bookmark instances
 
     expect(bm.length).to eq 3
@@ -32,7 +33,5 @@ describe Bookmark do
     # expect(Bookmark.all.first.title). to eq 'makers'
     expect(bookmark.url).to eq 'http://www.makersacademy.com'
     # expect(Bookmark.all.first.url). to eq 'http://www.makersacademy.com'
-
-    
   end
 end
