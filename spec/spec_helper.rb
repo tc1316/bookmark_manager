@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Set the environment to "test"
 ENV['RACK_ENV'] = 'test'
 ENV['CUSTOM_ENV_TYPE'] = 'test'
@@ -33,7 +35,7 @@ RSpec.configure do |config|
   config.before(:each) do
     Setup.instance.truncate
   end
-  
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

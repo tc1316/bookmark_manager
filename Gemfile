@@ -11,5 +11,5 @@ gem 'rubocop', '1.20'
 gem 'simplecov'
 gem 'simplecov-console'
 gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'pg'
+gem 'pg'gem 'sinatra-contrib'
+
