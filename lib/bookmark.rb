@@ -30,7 +30,7 @@ class Bookmark
             PG.connect(dbname: 'bookmark_manager')
           end
 
-    rs = con.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}') RETURNING id, url, title;")
+    rs = con.exec_params("INSERT INTO bookmarks (url, title) VALUES ($1, $2) RETURNING id, url, title;", [url, title])
     # rs is the query object, hence the need to .first (aka [0]) to access the hash containing id, url and title kv pairs
     Bookmark.new(rs[0]['id'], rs[0]['url'], rs[0]['title'])
   end
