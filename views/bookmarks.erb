@@ -1,18 +1,25 @@
 <h1> Bookmarks </h1>
-<form action='/url' method='post'>
-    <label for="title"> Add bookmark title:  </label>
+<form action='/add' method='post'>
+    <label for="title"> Add title:  </label>
     <input type="text" name="title"> <br><br>
-    <label for="url"> Add bookmark url:   </label>
-    <input type="text" name="url">
-    <input type="submit" value="Submit">
+    <label for="url"> Add url:   </label>
+    <input type="text" name="url"> 
+    <input type="submit" value="Add">
+
 </form>
 
 <ul>
   <% @bookmark.each do |bookmark| %>
-    <li>
-      <a href="<%= bookmark.url %>">
+    <li class="bookmark" id="bookmark-<%=bookmark.id %>">
+      <a href="<%= bookmark.url %>" target="_blank">
         <%= bookmark.title %>
       </a>
+      &ensp;&ensp;&ensp;
+      <form action="/bookmarks/<%=bookmark.id %>" method="post">
+      <%# method_override interprets _method with value DELETE %>
+        <input type='hidden' name='_method' value='DELETE'/> 
+        <input type="submit" value="Delete">
+      </form>
     </li>
   <% end %>
 </ul>
