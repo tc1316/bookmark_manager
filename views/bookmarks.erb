@@ -8,6 +8,12 @@
     <input type="submit" value="Add">
 </form>
 
+
+<p>
+  <%= flash[:notice] %>
+</p>
+
+
 <ul>
   <% @bookmark.each do |bookmark| %>
     <li class="bookmark" id="<%= bookmark.id %>">
@@ -26,3 +32,4 @@
     </li>
   <% end %>
 </ul>
+

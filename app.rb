@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-
+require 'sinatra/flash'
+require 'uri'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative './lib/bookmark'
@@ -7,6 +8,9 @@ require_relative './spec/database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
   enable :method_override
+  enable :sessions
+
+  register Sinatra::Flash
 
   configure :development do
     register Sinatra::Reloader
@@ -22,7 +26,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add' do
-    Bookmark.create(params[:url], params[:title])
+    flash[:notice] = 'Invalid URL!' unless Bookmark.create(params[:url], params[:title])
     redirect '/bookmarks'
   end
 
@@ -31,14 +35,14 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
-  patch '/bookmarks/:id' do
-    Bookmark.update(params[:id], params[:url], params[:title])
-    redirect '/bookmarks'
-  end
-
   get '/bookmarks/:id/edit' do
     @bookmark = Bookmark.find(params[:id])
     erb :edit
+  end
+
+  patch '/bookmarks/:id' do
+    Bookmark.update(params[:id], params[:url], params[:title])
+    redirect '/bookmarks'
   end
 
   run! if app_file == $PROGRAM_NAME

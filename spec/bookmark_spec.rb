@@ -24,7 +24,8 @@ describe Bookmark do
   context '#create'
   it 'can create new bookmarks' do
     bookmark = Bookmark.create('http://www.makersacademy.com', 'makers')
-    persisted_data = persisted_data(bookmark.id) # Returning id, url, title of above Bookmark instance using the id as the locator
+    # Returning id, url, title of above Bookmark instance using the id as the locator
+    persisted_data = persisted_data(bookmark.id) 
 
     expect(bookmark).to be_a Bookmark
     expect(bookmark.id).to eq persisted_data['id']
@@ -44,11 +45,11 @@ describe Bookmark do
   it 'can update a selected bookmark' do
     bookmark = Bookmark.create('http://www.makersacademy.com', 'Makers')
     persisted_data = persisted_data(bookmark.id)
-    updatedbookmark = Bookmark.update(bookmark.id, 'www.github.com', 'Github')
+    updatedbookmark = Bookmark.update(bookmark.id, 'https://github.com/', 'Github')
     expect(updatedbookmark).to be_a Bookmark
     expect(updatedbookmark.id).to eq persisted_data['id']
     expect(updatedbookmark.title).to eq 'Github'
-    expect(updatedbookmark.url).to eq 'www.github.com'
+    expect(updatedbookmark.url).to eq 'https://github.com/'
   end
 
   context 'find'

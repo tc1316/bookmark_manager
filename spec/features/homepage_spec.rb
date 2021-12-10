@@ -9,7 +9,7 @@ feature 'visiting BookmarkManager' do
     visit('/')
   end
 
-  scenario 'shows the bookmark page' do
+  scenario 'auto redirects to the bookmark page' do
     expect(page).to have_content('Bookmarks')
   end
 end
