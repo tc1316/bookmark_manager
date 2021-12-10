@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Set the environment to "test"
-ENV['RACK_ENV'] = 'test'
 ENV['CUSTOM_ENV_TYPE'] = 'test'
 
 # Bring in the contents of the `app.rb` file. The below is equivalent to: require_relative '../app.rb'

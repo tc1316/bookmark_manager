@@ -15,7 +15,7 @@ feature 'delete a bookmark from BookmarkManager' do
 
     # Expects first instance of html bookmark class below to have delete
     first('.bookmark').click_button('Delete')
-    expect(page).not_to have_link('Github', href: 'www.github.com')
     expect(current_path).to eq '/bookmarks'
+    expect(page).not_to have_link('Github', href: 'www.github.com')
   end
 end

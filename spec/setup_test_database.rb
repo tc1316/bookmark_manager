@@ -6,8 +6,9 @@ require 'singleton'
 class Setup
   include Singleton
   def truncate
-    p 'Cleaning up test database...'
+    p 'Connecting to test database...'
     con = PG.connect(dbname: 'bookmark_manager_test')
+    p 'Cleaning up test database...'
     con.exec('TRUNCATE bookmarks')
   end
 end
